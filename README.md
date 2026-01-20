@@ -40,7 +40,7 @@ python main.py --module SD_SC     # SD + SC 파이프라인 전체 학습
   "train_module": "SC_only",      // 학습할 모듈: SD, SC_only, SC_normal, SC_sarc, TC, SD_SC
 
   "train_config": {
-    "batch_size": 64,             // 배치 크기
+    "batch_size": 16,             // 배치 크기
     "epochs": 50,                 // 학습 에폭
     "learning_rate": 1e-4         // 학습률
   },
