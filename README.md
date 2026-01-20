@@ -5,12 +5,22 @@
 ## 설치
 
 ```bash
+# 1. conda 가상환경 생성
+conda create -n mindcast python=3.10 -y
 conda activate mindcast
+
+# 2. PyTorch 설치 (CUDA 버전에 맞게)
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# 3. 패키지 설치
+pip install -r requirements.txt
 ```
 
 ## 실행
 
 ```bash
+conda activate mindcast
+
 # 기본 실행 (config.json의 train_module 사용)
 python main.py
 
