@@ -1,0 +1,16 @@
+# Training outputs
+models/
+wandb/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+
+# HuggingFace cache
+.cache/
+
+# IDE
+.vscode/
+.idea/

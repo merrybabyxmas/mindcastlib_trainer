@@ -1,0 +1,66 @@
+{
+  "train_module": "SC_only",
+
+  "train_config": {
+    "base_model_name": "klue/roberta-base",
+    "batch_size": 64,
+    "epochs": 50,
+    "learning_rate": 1e-4,
+    "eval_metric": "macro_f1",
+    "warmup_ratio": 0.1,
+    "weight_decay": 0.01,
+    "gradient_accumulation_steps": 1,
+    "logging_steps": 50,
+    "save_total_limit": 2,
+    "lora_r": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05
+  },
+
+  "huggingface_repos": {
+    "SD": "merrybabyxmas/mindcast-sarcasm-detector",
+    "SC_only": "merrybabyxmas/mindcast-emotion-sc-only",
+    "SC_normal": "merrybabyxmas/mindcast-emotion-normal",
+    "SC_sarc": "merrybabyxmas/mindcast-emotion-sarcastic",
+    "TC": "merrybabyxmas/mindcast-topic-classifier"
+  },
+
+  "huggingface_config": {
+    "use_huggingface": true,
+    "private": false,
+    "token": null
+  },
+
+  "wandb_config": {
+    "use_wandb": true,
+    "project": "mindcast-project",
+    "run_name": "mindcast"
+  },
+
+  "task_configs": {
+    "SC": {
+      "num_labels": 6,
+      "label_list": ["분노", "슬픔", "불안", "상처", "당황", "기쁨"],
+      "id2label": {"0": "분노", "1": "슬픔", "2": "불안", "3": "상처", "4": "당황", "5": "기쁨"},
+      "label2id": {"분노": 0, "슬픔": 1, "불안": 2, "상처": 3, "당황": 4, "기쁨": 5}
+    },
+    "SD": {
+      "num_labels": 2,
+      "label_list": ["Non-sarcastic", "Sarcastic"],
+      "id2label": {"0": "Non-sarcastic", "1": "Sarcastic"},
+      "label2id": {"Non-sarcastic": 0, "Sarcastic": 1}
+    },
+    "TC": {
+      "num_labels": 7,
+      "label_list": ["사회", "정치", "생활문화", "세계", "경제", "IT과학", "스포츠"],
+      "id2label": {"0": "사회", "1": "정치", "2": "생활문화", "3": "세계", "4": "경제", "5": "IT과학", "6": "스포츠"},
+      "label2id": {"사회": 0, "정치": 1, "생활문화": 2, "세계": 3, "경제": 4, "IT과학": 5, "스포츠": 6}
+    }
+  },
+
+  "architectures": ["RobertaForSequenceClassification"],
+
+  "device_config": {
+    "cuda_device": "cuda:0"
+  }
+}
